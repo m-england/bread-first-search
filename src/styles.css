@@ -29,6 +29,12 @@ html {
     scrollbar-gutter: stable;
 }
 
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -36,12 +42,6 @@ html {
     padding: 2rem;
     font-weight: 700;
     text-align: center;
-
-    a {
-        text-decoration: none;
-        color: var(--secondary-color);
-        cursor: pointer;
-    }
 
     .add-button {
         font-size: 2rem;
