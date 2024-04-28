@@ -1,6 +1,6 @@
 <main>
     <input type="search" autofocus #searchBox />
-    @for (bakedGood of (filteredGoods$ | async); track bakedGood.id ) {
-    <app-good-view [bakedGood]="bakedGood" (deleteGood)="onDelete($event)" (rateGood)="onRate(bakedGood, $event)" />
-    }
+    <ng-container *ngFor="let bakedGood of (filteredGoods$ | async)">
+        <app-good-view [bakedGood]="bakedGood" (deleteGood)="onDelete($event)" (rateGood)="onRate(bakedGood, $event)" />
+    </ng-container>
 </main>
