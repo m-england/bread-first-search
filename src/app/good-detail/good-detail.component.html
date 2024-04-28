@@ -1,3 +1,3 @@
 <main>
-    <app-good-view *ngIf="bakedGood$ | async as bakedGood" [bakedGood]="bakedGood"></app-good-view>
+    <app-good-view *ngIf="store.good() as bakedGood" [bakedGood]="bakedGood"></app-good-view>
 </main>

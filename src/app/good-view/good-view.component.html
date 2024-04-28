@@ -2,7 +2,6 @@
 <article class="good-card">
     <header>
         {{bakedGood.name}}
-        <div class="delete-button" (click)="deleteClicked()">-</div>
     </header>
     <app-rating [rating]="bakedGood.rating ?? 0" (ratingUpdated)="rateClicked($event)" />
     <p>{{bakedGood.description}}</p>

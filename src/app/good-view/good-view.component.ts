@@ -12,12 +12,7 @@ import { RatingComponent } from '../rating/rating.component';
 })
 export class GoodViewComponent {
     @Input() bakedGood!: BakedGood;
-    @Output() deleteGood = new EventEmitter<number>();
     @Output() rateGood = new EventEmitter<number>();
-
-    deleteClicked() {
-        this.deleteGood.emit(this.bakedGood.id);
-    }
 
     rateClicked(rating: number) {
         this.rateGood.emit(rating);

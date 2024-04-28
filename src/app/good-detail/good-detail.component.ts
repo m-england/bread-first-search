@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { BakedGoodsService } from '../baked-goods.service';
-import { BakedGood } from '../data.service';
+import { Component, OnInit, inject, input } from '@angular/core';
+import { BakedGoodsStore } from '../baked-goods.store';
 import { GoodViewComponent } from '../good-view/good-view.component';
 
 @Component({
@@ -13,13 +11,14 @@ import { GoodViewComponent } from '../good-view/good-view.component';
     styleUrl: './good-detail.component.css'
 })
 export class GoodDetailComponent implements OnInit {
-    @Input() id!: number;
+    id = input.required<number>();
 
-    public bakedGood$!: Observable<BakedGood | null>;
+    readonly store = inject(BakedGoodsStore);
 
-    constructor(private bakedGoods: BakedGoodsService) { }
+    constructor() { }
 
     ngOnInit(): void {
-        this.bakedGood$ = this.bakedGoods.get(this.id);
+        this.store.loadAll();
+        this.store.selectId(this.id());
     }
 }

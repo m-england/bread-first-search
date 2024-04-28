@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BakedGoodsService } from '../baked-goods.service';
+import { BakedGoodsStore } from '../baked-goods.store';
 import { BakedGood } from '../data.service';
 
 @Component({
@@ -15,7 +15,9 @@ export class GoodAddComponent {
     @Output() addGood = new EventEmitter<Partial<BakedGood>>();
     public form!: FormGroup;
 
-    constructor(private bakedGood: BakedGoodsService, private router: Router, private fb: FormBuilder) {
+    readonly store = inject(BakedGoodsStore);
+
+    constructor(private router: Router, private fb: FormBuilder) {
         this.form = this.fb.group({
             name: [''],
             description: [''],
@@ -24,12 +26,14 @@ export class GoodAddComponent {
         });
     }
 
-    addClicked() {
+    async addClicked() {
         const goodToAdd = {
             ...this.form.value,
             pictures: ['baking_40.jpg']
 
-        }
-        this.bakedGood.create(goodToAdd).subscribe(() => this.router.navigate(['']));
+        };
+
+        await this.store.addGood(goodToAdd);
+        this.router.navigate(['']);
     }
 }

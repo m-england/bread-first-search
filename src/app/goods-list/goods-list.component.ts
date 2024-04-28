@@ -1,8 +1,7 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Observable, fromEvent, map, startWith, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
-import { BakedGoodsService } from '../baked-goods.service';
-import { BakedGood } from '../data.service';
 import { AsyncPipe, CommonModule } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
+import { BakedGoodsStore } from '../baked-goods.store';
+import { BakedGood } from '../data.service';
 import { GoodViewComponent } from '../good-view/good-view.component';
 
 @Component({
@@ -12,28 +11,13 @@ import { GoodViewComponent } from '../good-view/good-view.component';
     standalone: true,
     imports: [GoodViewComponent, CommonModule, AsyncPipe]
 })
-export class GoodsListComponent {
-    @ViewChild('searchBox') searchBox!: ElementRef<HTMLInputElement>;
-    filteredGoods$!: Observable<BakedGood[]>;
+export class GoodsListComponent implements OnInit {
+    readonly store = inject(BakedGoodsStore);
 
-    constructor(private bakedGoods: BakedGoodsService) { }
-    ngAfterViewInit(): void {
-        this.filteredGoods$ = fromEvent(this.searchBox.nativeElement, 'keyup').pipe(
-            map((event: Event) => (event.target as HTMLInputElement).value),
-            startWith(''),
-            debounceTime(300),
-            distinctUntilChanged(),
-            switchMap((search: string) =>
-                this.bakedGoods.getAll().pipe(
-                    map(goods => search ? goods.filter(g => g.name.toLowerCase().includes(search.toLowerCase())) : goods)
-                )
-            )
-        );
+    constructor() { }
 
-    }
-
-    onDelete(id: number) {
-        this.bakedGoods.delete(id);
+    ngOnInit(): void {
+        this.store.loadAll();
     }
 
     onRate(bakedGood: BakedGood, newRating: number) {
