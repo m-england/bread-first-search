@@ -8,12 +8,10 @@ import { Routes, provideRouter } from '@angular/router';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppComponent } from './app/app.component';
 import { ServiceData } from './app/data.service';
-import { GoodAddComponent } from './app/good-add/good-add.component';
-import { GoodsListComponent } from './app/goods-list/goods-list.component';
 
 const routes: Routes = [
-    { path: '', component: GoodsListComponent },
-    { path: 'add', component: GoodAddComponent }
+    { path: '', loadComponent: () => import('./app/goods-list/goods-list.component').then(m => m.GoodsListComponent) },
+    { path: 'add', loadComponent: () => import('./app/good-add/good-add.component').then(m => m.GoodAddComponent) }
 ];
 
 bootstrapApplication(AppComponent, {
