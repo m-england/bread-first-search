@@ -1,8 +1,8 @@
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Observable, fromEvent, map, startWith, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
+import { Observable, debounceTime, distinctUntilChanged, fromEvent, map, startWith, switchMap } from 'rxjs';
 import { BakedGoodsService } from '../baked-goods.service';
 import { BakedGood } from '../data.service';
-import { AsyncPipe, CommonModule } from '@angular/common';
 import { GoodViewComponent } from '../good-view/good-view.component';
 
 @Component({
@@ -34,9 +34,5 @@ export class GoodsListComponent {
 
     onDelete(id: number) {
         this.bakedGoods.delete(id);
-    }
-
-    onRate(bakedGood: BakedGood, newRating: number) {
-        bakedGood.rating = newRating;
     }
 }

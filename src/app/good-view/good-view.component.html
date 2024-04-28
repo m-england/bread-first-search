@@ -1,12 +1,12 @@
-<img class="good-image" src="/assets/images/{{bakedGood.pictures[0]}}" />
+<img class="good-image" src="/assets/images/{{bakedGood().pictures[0]}}" />
 <article class="good-card">
     <header>
-        {{bakedGood.name}}
+        {{bakedGood().name}}
         <div class="delete-button" (click)="deleteClicked()">-</div>
     </header>
-    <app-rating [rating]="bakedGood.rating ?? 0" (ratingUpdated)="rateClicked($event)" />
-    <p>{{bakedGood.description}}</p>
-    <div>Total Time: {{bakedGood.totalTime}}</div>
+    <app-rating [(rating)]="bakedGood().rating" />
+    <p>{{bakedGood().description}}</p>
+    <div>Total Time: {{bakedGood().totalTime}}</div>
     <footer>
         View Recipe
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"

@@ -1,15 +1,15 @@
 <header>
-    <span (click)="closeTimer()" id="close-icon">X</span>
+  <span (click)="closeTimer()" id="close-icon">X</span>
 </header>
 <section>
-    {{hour | number:'2.0-0'}}:{{minute| number:'2.0-0'}}:{{second| number:'2.0-0'}}
+  {{hour | number:'2.0-0'}}:{{minute| number:'2.0-0'}}:{{second| number:'2.0-0'}}
 </section>
 <footer>
-    <button *ngIf="!running; else stopBtn" (click)="startTimer()">Start</button>
-    <button id="cancel-btn" (click)="resetTimer()">Reset</button>
+  @if (!running) {
+    <button (click)="startTimer()">Start</button>
+  } @else {
+    <button (click)="stopTimer()">Stop</button>
+  }
+  <button id="cancel-btn" (click)="resetTimer()">Reset</button>
 </footer>
 
-<ng-template #stopBtn>
-    <button (click)="stopTimer()">Stop</button>
-
-</ng-template>

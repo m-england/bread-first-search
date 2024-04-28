@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Component, output } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BakedGoodsService } from '../baked-goods.service';
 import { BakedGood } from '../data.service';
@@ -12,7 +12,7 @@ import { BakedGood } from '../data.service';
     imports: [ReactiveFormsModule]
 })
 export class GoodAddComponent {
-    @Output() addGood = new EventEmitter<Partial<BakedGood>>();
+    addGood = output<Partial<BakedGood>>();
     public form!: FormGroup;
 
     constructor(private bakedGood: BakedGoodsService, private router: Router, private fb: FormBuilder) {

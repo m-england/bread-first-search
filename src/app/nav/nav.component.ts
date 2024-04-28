@@ -1,6 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { TimerComponent } from '../timer/timer.component';
+import { Component, ElementRef, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TimerComponent } from '../timer/timer.component';
 
 @Component({
     selector: 'app-nav',
@@ -10,13 +10,13 @@ import { RouterLink } from '@angular/router';
     imports: [RouterLink, TimerComponent]
 })
 export class NavComponent {
-    @ViewChild('timerModal') timerModal!: ElementRef<HTMLDialogElement>;
+    timerModal = viewChild.required('timerModal', { read: ElementRef<HTMLDialogElement> });
 
     openTimer() {
-        this.timerModal.nativeElement.showModal();
+        this.timerModal().nativeElement.showModal();
     }
 
     closeTimer() {
-        this.timerModal.nativeElement.close();
+        this.timerModal().nativeElement.close();
     }
 }

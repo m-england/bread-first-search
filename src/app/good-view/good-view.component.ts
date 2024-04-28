@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { BakedGood } from '../data.service';
 import { RatingComponent } from '../rating/rating.component';
 
@@ -10,15 +10,11 @@ import { RatingComponent } from '../rating/rating.component';
     imports: [RatingComponent]
 })
 export class GoodViewComponent {
-    @Input() bakedGood!: BakedGood;
-    @Output() deleteGood = new EventEmitter<number>();
-    @Output() rateGood = new EventEmitter<number>();
+    bakedGood = input.required<BakedGood>();
+
+    deleteGood = output<number>();
 
     deleteClicked() {
-        this.deleteGood.emit(this.bakedGood.id);
-    }
-
-    rateClicked(rating: number) {
-        this.rateGood.emit(rating);
+        this.deleteGood.emit(this.bakedGood().id);
     }
 }
