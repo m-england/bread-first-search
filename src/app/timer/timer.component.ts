@@ -1,9 +1,12 @@
 import { Component, EventEmitter, OnInit, Output, output } from '@angular/core';
+import { NgIf, DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'app-timer',
     templateUrl: './timer.component.html',
-    styleUrl: './timer.component.css'
+    styleUrl: './timer.component.css',
+    standalone: true,
+    imports: [NgIf, DecimalPipe]
 })
 export class TimerComponent implements OnInit {
     @Output() close = new EventEmitter();

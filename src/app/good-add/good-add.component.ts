@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BakedGoodsService } from '../baked-goods.service';
 import { BakedGood } from '../data.service';
@@ -7,7 +7,9 @@ import { BakedGood } from '../data.service';
 @Component({
     selector: 'app-good-add',
     templateUrl: './good-add.component.html',
-    styleUrl: './good-add.component.css'
+    styleUrl: './good-add.component.css',
+    standalone: true,
+    imports: [ReactiveFormsModule]
 })
 export class GoodAddComponent {
     @Output() addGood = new EventEmitter<Partial<BakedGood>>();

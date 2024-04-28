@@ -8,8 +8,8 @@ describe('GoodAddComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GoodAddComponent]
-    })
+    imports: [GoodAddComponent]
+})
     .compileComponents();
     
     fixture = TestBed.createComponent(GoodAddComponent);
