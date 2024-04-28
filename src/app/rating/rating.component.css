@@ -1,0 +1,21 @@
+:host {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start; 
+}
+
+svg {
+    cursor: pointer;
+    fill: #e0e0e0;
+}
+
+svg.filled {
+    fill: #ffc107;
+}
+
+svg:hover {
+    fill: #ffc107;
+    ~ svg {
+        fill: #ffc107;
+    }
+}

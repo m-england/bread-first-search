@@ -1,0 +1,35 @@
+header {
+    font-size: 1.33rem;
+    font-weight: 700;
+    text-align: right;
+    padding: .5rem;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+    font-size: 3rem;
+}
+
+footer {
+    display: flex;
+    justify-content: end;
+
+    button {
+        width: 100%;
+    }
+}
+
+#close-icon {
+    cursor: pointer;
+}
+
+button {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+#cancel-btn {
+    background: var(--accent-color);
+}

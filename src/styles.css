@@ -1,1 +1,243 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
+:root {
+    --primary-color: #5C4033;
+    --secondary-color: #F5F5DC;
+    --tertiary-color: #DAA520;
+    --accent-color: #8B0000;
+    --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Fira Code", monospace;
+    font-optical-sizing: auto;
+    background: var(--primary-color);
+    color: var(--secondary-color)
+}
+
+html {
+    height: 100%;
+    scrollbar-gutter: stable;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    font-weight: 700;
+    text-align: center;
+
+    a {
+        text-decoration: none;
+        color: var(--secondary-color);
+        cursor: pointer;
+    }
+
+    .add-button {
+        font-size: 2rem;
+        padding-inline: .75rem;
+        border: 6px solid var(--secondary-color);
+        border-radius: 50%;
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 2rem;
+    padding-inline: 2rem;
+}
+
+dialog[open] {
+    border-radius: 4px;
+    border: 0;
+    outline: 0;
+    box-shadow: 0 11px 15px -7px #0003, 0 24px 38px 3px #00000024, 0 9px 46px 8px #0000001f;
+    background: white;
+    color: #5c5c5c;
+    min-width: fit-content;
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    width: 90%;
+
+    &::backdrop {
+        background: inherit;
+    }
+
+    &[data-overlay]::backdrop {
+        background: #ccc;
+        opacity: .5;
+    }
+}
+
+body:has(dialog[open]) {
+    position: fixed;
+    overflow-y: scroll;
+}
+
+@media (min-width: 600px) {
+    dialog[open] {
+        position: absolute;
+        left: 40%;
+        top: 25%;
+        width: fit-content;
+    }
+}
+
+
+@media (min-width: 600px) {
+    .main-header {
+        padding: 3rem 7rem;
+        text-align: left;
+    }
+
+    main {
+        margin-bottom: 3rem;
+        gap: 3rem;
+        padding-inline: 7rem;
+    }
+}
+
+.saved-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.results>div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
+    padding: .5rem;
+    border: 2px solid var(--tertiary-color);
+
+}
+
+input {
+    outline: 0;
+    height: 3rem;
+    border: 0;
+    padding: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+button {
+    background-color: var(--tertiary-color);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+input[type=search] {
+    width: 100%;
+    background: var(--secondary-color);
+    color: var(--tertiary-color);
+    font-size: 1.8rem;
+    border: 0;
+    border-radius: .7rem;
+    padding: 0 1.6rem;
+    appearance: none;
+    transition: all .3s var(--bez);
+    transition-property: width, border-radius;
+}
+
+
+app-good-view {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.356);
+}
+
+article.good-card {
+    display: flex;
+    gap: 1rem;
+    position: relative;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1.5rem;
+
+        .delete-button {
+            cursor: pointer;
+            color: var(--accent-color);
+            font-size: 2rem;
+            padding-inline: .75rem;
+            border: 4px solid var(--accent-color);
+            border-radius: 50%;
+        }
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem 2rem;
+        background: var(--accent-color);
+        color: var(--secondary-color);
+        border-radius: 10px 0 8px 0;
+    }
+}
+
+img.good-image {
+    width: calc(100vw - 4rem);
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+@media (min-width: 600px) {
+    app-good-view {
+        flex-direction: row;
+    }
+
+    article.good-card {
+        border-radius: 0 10px 10px 0;
+
+        footer {
+            position: absolute;
+            padding: 1rem 5rem;
+            bottom: 0rem;
+            right: 0rem;
+        }
+    }
+
+    img.good-image {
+        width: 33vw;
+        border-radius: 10px 0 0 10px;
+    }
+
+}

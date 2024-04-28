@@ -1,0 +1,6 @@
+<main>
+    <input type="search" autofocus #searchBox />
+    @for (bakedGood of (filteredGoods$ | async); track bakedGood.id ) {
+    <app-good-view [bakedGood]="bakedGood" (deleteGood)="onDelete($event)" (rateGood)="onRate(bakedGood, $event)" />
+    }
+</main>

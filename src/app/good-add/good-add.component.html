@@ -1,0 +1,11 @@
+<form [formGroup]="form">
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name" autofocus />
+    <label for="desc">Description</label>
+    <input type="text" id="desc" formControlName="description" />
+    <label for="total-time">Total Time</label>
+    <input type="text" id="total-time" formControlName="totalTime" />
+    <label for="recipe-link">Recipe Link</label>
+    <input type="text" id="recipe-link" formControlName="recipeLink" />
+    <button (click)="addClicked()">Add</button>
+</form>
