@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Observable, fromEvent, map, startWith, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { BakedGoodsService } from '../baked-goods.service';
 import { BakedGood } from '../data.service';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { GoodViewComponent } from '../good-view/good-view.component';
 
 @Component({
@@ -10,7 +10,7 @@ import { GoodViewComponent } from '../good-view/good-view.component';
     templateUrl: './goods-list.component.html',
     styleUrl: './goods-list.component.css',
     standalone: true,
-    imports: [GoodViewComponent, AsyncPipe]
+    imports: [GoodViewComponent, CommonModule, AsyncPipe]
 })
 export class GoodsListComponent {
     @ViewChild('searchBox') searchBox!: ElementRef<HTMLInputElement>;
