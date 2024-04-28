@@ -13,5 +13,9 @@
 </header>
 
 <dialog data-overlay #timerModal>
+    @defer (on viewport) {
     <app-timer (close)="closeTimer()"></app-timer>
+    } @placeholder {
+    <div>Timer Loading</div>
+    }
 </dialog>
