@@ -13,6 +13,10 @@ export class BakedGoodsService {
         return this.http.get<BakedGood[]>('/api/bakedGoods');
     }
 
+    get(id: number) {
+        return this.http.get<BakedGood>(`/api/bakedGoods/${id}`);
+    }
+
     delete(id: number) {
         return this.http.delete(`/api/bakedGoods/${id}`);
     }
