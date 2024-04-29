@@ -145,5 +145,6 @@ export interface BakedGood {
     recipeLink?: string;
     pictures: string[];
     description: string;
-    totalTime: string; rating?: number;
+    totalTime: string;
+    rating: number;
 }
