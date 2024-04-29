@@ -1,7 +1,17 @@
-Implement the Timer
+# Angular Adventures
 
-1. implement the next branch that uses standalone components for lazy loading instead of new modules. And maybe removing app.module all together.
+## Navigating the Reactive Realms
 
-2. Implement a branch from that converts the conditional syntax, introduces some signals, inlines templates and css, and updates the angular schematics.
+The master branch contains a standard angular application, pre-v17 of Angular.
 
-3. Implement a branch from that that shows how signal store can be used. Possibly try to incorporate a dispatcher and some actions.
+For an example of this app converted to use standalone components and no modules:
+
+`git checkout standalone-components`
+
+For an example of this app converted to use signals and the new conditional syntax:
+
+`git checkout reactive-objects`
+
+For an example of this app converted to use ngrx/signal-store:
+
+`git checkout actions-effects`
